@@ -18,36 +18,9 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-class Bustran;
-int data;
-int addr;
-function  automatic transmit(Bustran bt);
-     automatic int rx_data;
-     rx_data = bt.data;
-    $display("the value of %d",bt); 
-endfunction
-endclass:Bustran
 
 
-class sub;
-     int obj;
-         function sub copy();
-              //copy = new();
-              copy.obj = this.obj;
-         endfunction:copy
-endclass:sub
-
-class trans;
-     int data;
-     sub sub_h =new();
-     function trans copy();
-             copy = new();
-             copy.data=this.data;
-             copy.sub_h.obj=this.sub_h.obj;
-     endfunction:copy
-endclass:trans
-
-/*module BinarySearch;
+module BinarySearch;
 function automatic int binarySearch(int array[],int size,int target);
     int low = 0;
     static int high;
@@ -78,29 +51,5 @@ function automatic int binarySearch(int array[],int size,int target);
     else
       $display("Target %d not found", target);
       
-  end
-function automatic int display(input int a);
-        automatic int x=a+5;
-        return x;
-endfunction
-endmodule*/
-
-
-module test;
-trans t1,t2;
-initial
-begin
-t1=new();
-t1.data=5;
-t1.sub_h.obj=6;
-t2=t1.copy;
-$display("T1 contents =%p",t1);
-$display("T2 contents =%p",t2);
-t2.sub_h.obj=10;
-$display("T1 contents =%p",t1);
-$display("T2 contents =%p",t2);
-t1.sub_h.obj=6;
-$display("T1 contents =%p",t1);
-$display("T2 contents =%p",t2);
-end
+  end     
 endmodule
