@@ -1,10 +1,10 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: self
+// Engineer: Raghuch
 // 
 // Create Date: 22.05.2024 11:22:05
-// Design Name: 
+// Design Name: Constraint pattern
 // Module Name: test
 // Project Name: 
 // Target Devices: 
