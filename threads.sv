@@ -19,8 +19,8 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
-/*module threads;
+//named events how blocking of events we learned
+module threads;
      event ev;
         initial 
             begin
@@ -40,8 +40,8 @@
             end
 endmodule
 
+// using semaphore we learned process/thread  synchronization  and hold the first thread and stopped from execution
 
-*/
 module semaphore;
 semaphore sem;
 class driver;
