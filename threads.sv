@@ -77,4 +77,37 @@ endclass:driver
 endmodule
 
 
+module semaphore;
+semaphore sem;
+class driver;
+     task send();
+     fork  
+           begin
+             sem.get(2);
+                $display("it will execute1234"); // after executing first this thread will execute even though it has priority
+             sem.put(0);
+           end
+            begin
+             sem.get(1);
+             $display("it will execute");
+                 sem.put(2); /// making this thread should execute first 
+           end
+        join            
+     endtask:send
+endclass:driver
+
+
+     driver dr[2];
+     
+     initial 
+          begin
+              foreach(dr[i])
+                  dr[i]= new();
+              sem = new(1);
+          fork 
+             dr[0].send();
+             dr[1].send();
+          join
+          end
+endmodule
 
