@@ -57,7 +57,29 @@ initial
     end
 endmodule:packet
 
+/// constraint to generate a pattern 1 0 2 0 0 3 0 0 0 4 ..... upto last index in the dynamic array.
 
 
+class newpattern;
+   rand byte da[];
+   constraint size{da.size==15;}
+   constraint patte{foreach(da[i]){
+                              if(i%2==0){
+                                   da[14-((i+1)/2)]==i;}
+                               else if(i%2!=0){
+                                   da[(14-i)/2]==i;
+                              }}}
+endclass:newpattern
+module packet;
 
-   /// constraint to generate a pattern 1 0 2 0 0 3 0 0 0 4 ..... upto last index in the dynamic array.
+newpattern pa;
+initial 
+    begin
+   pa = new;
+   pa.randomize();  
+   $display("%p",pa);  
+    end
+endmodule:packet
+
+
+      //output :'{da:'{13,11,9,7,5,3,1,14,12,10,8,6,4,2,0}} //seperate odd and even values
