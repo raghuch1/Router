@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 //named events how blocking of events we learned
-module threads;
+module events;
      event ev;
         initial 
             begin
@@ -38,7 +38,7 @@ module threads;
                 wait(ev.triggered);
                  $display("the after event22");                
             end
-endmodule
+endmodule:events
 
 // using semaphore we learned process/thread  synchronization  and hold the first thread and stopped from execution
 
