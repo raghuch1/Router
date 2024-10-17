@@ -1,3 +1,6 @@
+// Generated a array of fibonocci numbers using constraints in SystemVerilog
+// output
+//  array is '{0,1,1,2,3,5,8,13,21,34}
 class test;
 rand int array[];
 constraint size{array.size==10;}
