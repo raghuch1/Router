@@ -1,3 +1,4 @@
+// it will generate a pattern of 123..321 palindrome
 class test;
    rand bit[3:0] array[];
    constraint size{array.size==14;}
