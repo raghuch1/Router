@@ -388,3 +388,34 @@ endinterface
   
   
 endmodule*/
+
+
+// RTL for parallel read, write SRAM.
+
+// Code your design here  
+
+//Written in processor perceptive so read cannot cross write for same address.
+module ram(input clk,rst,input [11:0]waddr,raddr,input [31:0]wdata,input write,read,output reg[31:0]rdata);
+  
+  reg [31:0]mem[0:4096];
+    
+  always@(posedge clk)
+    begin
+      if(rst)
+        begin
+          for(int i=0;i<4097;i++)
+            mem[i]<=0;
+          rdata<=0;
+        end
+      else
+        begin
+          if(write)
+            mem[waddr]<=wdata;
+          if(read)
+            rdata<=mem[raddr];
+          else
+            rdata<=32'bxx;
+        end
+    end
+  
+endmodule
